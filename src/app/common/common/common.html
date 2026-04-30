@@ -1,0 +1,144 @@
+<!-- NAVBAR -->
+<header class="flex items-center justify-between bg-[#131921] text-white px-4 py-2 gap-2">
+
+    <!-- LEFT -->
+    <div class="flex items-center gap-2">
+        <div class="text-xl cursor-pointer" (click)="toggleSidebar()">☰</div>
+        <div class="text-lg font-bold text-yellow-400">🛍️ ShopEase</div>
+    </div>
+
+    <!-- SEARCH -->
+
+
+
+    <div class="flex-1 flex justify-center">
+        <input
+                type="text"
+                placeholder="Search products..."
+                (input)="onSearch($event)"
+                class="w-full max-w-[500px] px-4 py-2 rounded-full outline-none text-black"
+        >
+    </div>
+
+
+
+
+    <div class="flex items-center gap-4 ml-auto">
+
+        <div (click)="navigateToCart()" class="relative cursor-pointer group">
+            <div class="text-2xl transition-transform duration-200 group-hover:scale-110">
+                🛒
+            </div>
+
+            <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold
+                     w-5 h-5 flex items-center justify-center rounded-full shadow-md">
+            {{ cartLength }}
+        </span>
+        </div>
+
+
+        <div class="relative">
+
+            <!-- PROFILE ICON -->
+            <div
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-orange-500 text-white font-bold cursor-pointer hover:scale-105 transition"
+                    (click)="toggleProfile()"
+            >
+                {{ userEmail?.charAt(0)?.toUpperCase() || 'U' }}
+            </div>
+
+            <!-- DROPDOWN -->
+            <div
+                    *ngIf="isProfileOpen"
+                    class="absolute right-0 mt-2 w-56 bg-white text-black rounded-xl shadow-xl p-3 z-50 border"
+            >
+
+                <!-- USER INFO -->
+                <div class="text-sm font-semibold border-b pb-2 mb-2">
+                    {{ userEmail || 'User' }}
+                </div>
+
+                <!-- LOGOUT -->
+                <div
+                        class="cursor-pointer text-red-500 hover:bg-red-100 p-2 rounded-lg"
+                        (click)="logout()"
+                >
+                    🚪 Logout
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</header>
+
+<!-- HERO -->
+
+
+<!-- SIDEBAR -->
+<div
+        class="fixed top-0 left-0 w-[260px] h-full bg-[#1f2a36] text-white z-[2000] transition-transform duration-300"
+        [ngClass]="isSidebarOpen ? 'translate-x-0' : '-translate-x-full'"
+>
+
+    <!-- HEADER -->
+    <div class="flex justify-between items-center p-4 border-b border-gray-600">
+        <span>🛍️ ShopEase</span>
+        <span class="text-xl cursor-pointer" (click)="toggleSidebar()">✖</span>
+    </div>
+
+    <!-- MENU -->
+    <div class="p-2">
+
+        <div
+                class="p-3 rounded-lg mb-1 cursor-pointer hover:bg-white/10"
+                (click)="navigateToHome()"
+        >
+            🏠 Home
+        </div>
+
+        <div
+                *ngIf="isAdmin()"
+                class="p-3 rounded-lg mb-1 cursor-pointer hover:bg-white/10"
+                (click)="navigateToCategories()"
+        >
+            🛍️ Add Product
+        </div>
+
+        <div
+                class="p-3 rounded-lg mb-1 cursor-pointer hover:bg-white/10"
+                (click)="navigateToCart()"
+        >
+            🛍️ My Cart
+        </div>
+
+
+        <div
+                class="p-3 rounded-lg mb-1 cursor-pointer hover:bg-white/10"
+                (click)="navigateToBuyNow()"
+        >
+            🛍️ Buy Now Products
+        </div>
+
+
+        <div
+                class="p-3 rounded-lg mb-1 cursor-pointer hover:bg-white/10"
+                (click)="navigateToOrders()"
+        >
+            📦 Orders
+        </div>
+
+    </div>
+
+</div>
+
+<!-- OVERLAY -->
+<div
+        *ngIf="isSidebarOpen"
+        class="fixed inset-0 bg-black/40 z-[1500]"
+        (click)="toggleSidebar()"
+></div>

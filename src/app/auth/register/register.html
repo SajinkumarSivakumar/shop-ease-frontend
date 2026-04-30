@@ -1,0 +1,139 @@
+<div
+        class="min-h-screen flex items-center justify-center bg-cover bg-center"
+        style="background-image: linear-gradient(rgba(10,10,10,0.75), rgba(10,10,10,0.85)), url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a');"
+>
+    <form
+            [formGroup]="registerForm"
+            (ngSubmit)="register()"
+            class="backdrop-blur-xl bg-white/10 border border-white/20 p-10 w-[420px] md:w-[480px] rounded-2xl shadow-2xl text-white text-center"
+    >
+        <!-- Logo -->
+        <div class="text-4xl mb-2">🛍️</div>
+
+        <!-- Brand -->
+        <h2 class="text-2xl font-bold tracking-wide">ShopEase</h2>
+        <h3 class="mt-2 font-normal">Welcome Back</h3>
+        <p class="text-sm text-gray-300 mb-5">
+            Sign in to continue shopping
+        </p>
+
+        <!-- First Name -->
+        <input
+                type="text"
+                formControlName="first_name"
+                placeholder="First Name"
+                class="w-full p-3 mb-3 rounded-lg bg-white/20 text-white placeholder-gray-300 outline-none focus:ring-2 focus:ring-pink-500"
+        />
+        <div
+                class="text-xs text-red-300 text-left -mt-2 mb-2"
+                *ngIf="registerForm.get('first_name')?.touched && registerForm.get('first_name')?.invalid"
+        >
+            Enter valid FirstName
+        </div>
+
+        <!-- Last Name -->
+        <input
+                type="text"
+                formControlName="last_name"
+                placeholder="Last Name"
+                class="w-full p-3 mb-3 rounded-lg bg-white/20 text-white placeholder-gray-300 outline-none focus:ring-2 focus:ring-pink-500"
+        />
+        <div
+                class="text-xs text-red-300 text-left -mt-2 mb-2"
+                *ngIf="registerForm.get('last_name')?.touched && registerForm.get('last_name')?.invalid"
+        >
+            Enter valid LastName
+        </div>
+
+
+
+<!--        roll-->
+
+
+        <select
+                formControlName="role"
+                class="w-full p-3 mb-3 rounded-lg bg-white/20 text-white outline-none focus:ring-2 focus:ring-pink-500"
+        >
+            <option value="" disabled selected class="text-black">Select Role</option>
+            <option value="admin" class="text-black">Admin</option>
+            <option value="user" class="text-black">User</option>
+        </select>
+
+        <div
+                class="text-xs text-red-300 text-left -mt-2 mb-2"
+                *ngIf="registerForm.get('role')?.touched && registerForm.get('role')?.invalid"
+        >
+            Please select role
+        </div>
+
+
+
+        <!-- Email -->
+        <input
+                type="email"
+                formControlName="email"
+                placeholder="Email"
+                class="w-full p-3 mb-3 rounded-lg bg-white/20 text-white placeholder-gray-300 outline-none focus:ring-2 focus:ring-pink-500"
+        />
+        <div
+                class="text-xs text-red-300 text-left -mt-2 mb-2"
+                *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid"
+        >
+            Enter valid Email
+        </div>
+
+        <!-- Password -->
+        <div class="relative">
+            <input
+                    [type]="showPassword ? 'text' : 'password'"
+                    formControlName="password"
+                    placeholder="Password"
+                    class="w-full p-3 mb-3 rounded-lg bg-white/20 text-white placeholder-gray-300 outline-none focus:ring-2 focus:ring-pink-500"
+            />
+            <span
+                    class="absolute right-3 top-3 cursor-pointer"
+                    (click)="togglePassword()"
+            >
+        {{ showPassword ? '🙈' : '👁' }}
+      </span>
+        </div>
+
+        <div
+                class="text-xs text-red-300 text-left -mt-2 mb-2"
+                *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"
+        >
+            Password required
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="relative">
+            <input
+                    [type]="showConfirmPassword ? 'text' : 'password'"
+                    formControlName="confirmPassword"
+                    placeholder="Confirm Password"
+                    class="w-full p-3 mb-3 rounded-lg bg-white/20 text-white placeholder-gray-300 outline-none focus:ring-2 focus:ring-pink-500"
+            />
+            <span
+                    class="absolute right-3 top-3 cursor-pointer"
+                    (click)="toggleConfirmPassword()"
+            >
+        {{ showConfirmPassword ? '🙈' : '👁' }}
+      </span>
+        </div>
+
+        <div
+                class="text-xs text-red-300 text-left -mt-2 mb-2"
+                *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid"
+        >
+            Confirm Password required
+        </div>
+
+        <!-- Button -->
+        <button
+                type="submit"
+                class="w-full p-3 bg-gradient-to-r from-pink-500 to-orange-400 rounded-lg font-bold hover:scale-105 transition"
+        >
+            Register
+        </button>
+    </form>
+</div>

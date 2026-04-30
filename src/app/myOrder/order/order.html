@@ -1,0 +1,174 @@
+<body class="m-0 font-sans bg-gradient-to-br from-gray-100 to-gray-200 relative">
+<!-- Overlay -->
+<div class="fixed inset-0 bg-white/85 -z-10"></div>
+
+<header>
+    <app-common></app-common>
+</header>
+
+<!-- HERO -->
+<section class="bg-gradient-to-r from-[#ff512f] to-[#dd2476] text-white text-center py-6 px-5">
+
+    <h1 class="text-3xl font-bold">40-80% OFF</h1>
+
+    <p class="text-lg font-semibold mt-2">
+        Big Festival Sale is Live 🔥
+    </p>
+
+    <p class="text-sm mt-1 opacity-90">
+        Category Of ShopEase 🔥
+    </p>
+
+</section>
+
+
+
+
+
+
+<div class="min-h-screen bg-gray-100 p-6">
+
+    <!-- TITLE -->
+    <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">
+        🛒 My Orders
+    </h1>
+
+    <!-- TABLE WRAPPER -->
+    <div class="max-w-7xl mx-auto bg-white shadow-xl rounded-2xl overflow-hidden">
+
+        <div class="overflow-x-auto">
+
+            <table class="w-full text-sm">
+
+                <!-- HEADER -->
+                <thead class="bg-gray-900 text-white">
+                <tr>
+                    <th class="p-4 text-left">S.No</th>
+                    <th class="p-4 text-left">Product</th>
+                    <th class="p-4 text-left">Price</th>
+                    <th class="p-4 text-left">Discount</th>
+                    <th class="p-4 text-left">Status</th>
+                    <th class="p-4 text-center">Rating</th>
+                </tr>
+                </thead>
+
+                <!-- BODY -->
+                <tbody>
+
+                <tr *ngFor="let order of orderList; let i = index"
+                    class="border-b hover:bg-gray-50 transition">
+
+                    <!-- S.NO -->
+                    <td class="p-4 font-semibold text-gray-700">
+                        {{ i + 1 }}
+                    </td>
+
+                    <!-- PRODUCT -->
+                    <td class="p-4 flex items-center gap-3">
+
+                        <img
+                                [src]="'http://localhost:3000/uploads/' + order.fileName"
+                                class="w-14 h-14 object-cover rounded-lg border"
+                        />
+
+                        <span class="font-medium text-gray-800">
+                                {{ order.description }}
+                            </span>
+
+                    </td>
+
+                    <!-- PRICE -->
+                    <td class="p-4 font-bold text-green-600">
+                        ₹ {{ order.finalRate }}
+                    </td>
+
+                    <!-- DISCOUNT -->
+                    <td class="p-4 text-red-500 font-semibold">
+                        {{ order.discount }}%
+                    </td>
+
+                    <!-- STATUS -->
+                    <td class="p-4">
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">
+                                Processing
+                            </span>
+                    </td>
+
+                    <!-- RATING -->
+                    <td class="p-4 text-center">
+
+                        <div class="flex justify-center gap-1 text-yellow-400 text-lg">
+                            ★★★★☆
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- CATEGORY GRID -->
+
+
+<!-- FOOTER -->
+<footer class="bg-[#131921] text-white py-10 px-5 mt-10">
+
+    <div class="flex flex-wrap justify-between max-w-[1200px] mx-auto">
+
+        <!-- Brand -->
+        <div class="flex-1 min-w-[200px] mb-5">
+            <h2 class="mb-2 text-xl">🛍️ ShopEase</h2>
+            <p class="text-gray-400">
+                Your one-stop online shop for fashion
+            </p>
+        </div>
+
+        <!-- Links -->
+        <div class="flex-1 min-w-[150px] mb-5">
+            <h3 class="mb-2">Quick Links</h3>
+            <p class="text-gray-400 my-1">Home</p>
+            <p class="text-gray-400 my-1">Products</p>
+            <p class="text-gray-400 my-1">Orders</p>
+            <p class="text-gray-400 my-1">Cart</p>
+        </div>
+
+        <!-- Customer -->
+        <div class="flex-1 min-w-[150px] mb-5">
+            <h3 class="mb-2">Customer Service</h3>
+            <p class="text-gray-400 my-1">Help Center</p>
+            <p class="text-gray-400 my-1">Returns</p>
+            <p class="text-gray-400 my-1">Shipping</p>
+            <p class="text-gray-400 my-1">Contact Us</p>
+        </div>
+
+        <!-- Social -->
+        <div class="flex-1 min-w-[150px] mb-5">
+            <h3 class="mb-2">Follow Us</h3>
+            <p class="text-gray-400 my-1">Instagram</p>
+            <p class="text-gray-400 my-1">Facebook</p>
+            <p class="text-gray-400 my-1">Twitter</p>
+        </div>
+
+    </div>
+
+    <hr class="border-gray-700 my-5">
+
+    <div class="text-center text-gray-400">
+        © 2026 ShopEase. All Rights Reserved.
+    </div>
+
+</footer>
+
+</body>
+
+

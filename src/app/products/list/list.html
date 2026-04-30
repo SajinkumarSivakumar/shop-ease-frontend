@@ -1,0 +1,204 @@
+<body class="m-0 font-sans bg-gradient-to-br from-gray-100 to-gray-200 relative">
+
+<!-- Overlay -->
+<div class="fixed inset-0 bg-white/85 -z-10"></div>
+
+<header>
+    <app-common></app-common>
+</header>
+
+<!-- HERO -->
+<section class="bg-gradient-to-r from-[#ff512f] to-[#dd2476] text-white text-center py-6 px-5">
+
+    <h1 class="text-3xl font-bold">40-80% OFF</h1>
+
+    <p class="text-lg font-semibold mt-2">
+        Big Festival Sale is Live 🔥
+    </p>
+
+    <p class="text-sm mt-1 opacity-90">
+        Category Of ShopEase 🔥
+    </p>
+
+</section>
+
+
+<div class="min-h-screen bg-gray-100 p-6">
+
+    <!-- TITLE -->
+    <h1 class="text-2xl font-bold mb-6 text-center">
+        🛒 Your Products
+    </h1>
+
+    <!-- CARD WRAPPER -->
+    <div class="flex items-center justify-center">
+
+        <div class="max-w-6xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 border">
+
+            <!-- LEFT IMAGE -->
+            <div class="p-8 bg-gray-50 flex flex-col items-center justify-center relative">
+
+      <span class="absolute top-4 left-4 bg-red-500 text-white text-xs px-3 py-1 rounded-full shadow">
+        {{ product?.discount }}% OFF
+      </span>
+
+                <img
+                        [src]="'http://localhost:3000/uploads/' + product.fileName"
+                        class="w-[80%] max-h-[400px] object-contain hover:scale-110 transition duration-300 drop-shadow-xl"
+                />
+
+
+
+
+            </div>
+
+            <!-- RIGHT DETAILS -->
+            <div class="p-8 space-y-6">
+
+                <!-- TITLE -->
+                <h1 class="text-3xl font-bold text-gray-800">
+                    {{ product?.name }}
+                </h1>
+
+                <!-- RATING -->
+                <div class="flex items-center gap-2 text-yellow-500">
+                    ⭐⭐⭐⭐☆
+                    <span class="text-gray-500 text-sm">(134 reviews)</span>
+                </div>
+
+                <!-- PRICE -->
+                <div class="bg-gray-50 p-5 rounded-xl">
+
+                    <div class="flex items-center gap-4">
+          <span class="text-3xl font-bold text-green-600">
+            ₹ {{ product?.finalRate }}
+          </span>
+
+                        <span class="text-lg text-gray-400 line-through">
+            ₹ {{ product?.rate }}
+          </span>
+                    </div>
+
+                    <div class="text-sm text-green-600 mt-1">
+                        You save ₹ {{ product?.rate - product?.finalRate }}
+                    </div>
+
+                </div>
+
+                <!-- STOCK -->
+                <div class="text-sm font-semibold text-green-600">
+                    ✔ In Stock
+                </div>
+
+                <!-- DESCRIPTION -->
+                <p class="text-gray-600 leading-relaxed">
+                    {{ product?.description }}
+                </p>
+
+                <!-- HIGHLIGHTS -->
+                <div class="bg-gray-50 p-4 rounded-xl">
+                    <h3 class="font-semibold mb-2">Highlights</h3>
+                    <ul class="text-sm text-gray-600 space-y-1 list-disc ml-5">
+                        <li>Premium quality material</li>
+                        <li>Durable & long lasting</li>
+                        <li>Best in this price range</li>
+                    </ul>
+                </div>
+
+                <!-- QUANTITY -->
+
+
+                <!-- BUTTONS -->
+                <div class="flex gap-4">
+
+
+                    <button
+                            (click)="yourOrder(product)"
+                            class="w-full bg-orange-500 hover:bg-red-500 text-white py-3 rounded-xl font-semibold transition">
+                        Buy Now ⚡
+                    </button>
+
+                </div>
+
+                <!-- TRUST INFO -->
+                <div class="grid grid-cols-3 text-center text-xs text-gray-500 gap-4 mt-4">
+
+                    <div>
+                        🚚<br/>Free Delivery
+                    </div>
+
+                    <div>
+                        🔁<br/>7 Days Return
+                    </div>
+
+                    <div>
+                        🔒<br/>Secure Payment
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<!-- CATEGORY GRID -->
+
+
+<!-- FOOTER -->
+<footer class="bg-[#131921] text-white py-10 px-5 mt-10">
+
+    <div class="flex flex-wrap justify-between max-w-[1200px] mx-auto">
+
+        <!-- Brand -->
+        <div class="flex-1 min-w-[200px] mb-5">
+            <h2 class="mb-2 text-xl">🛍️ ShopEase</h2>
+            <p class="text-gray-400">
+                Your one-stop online shop for fashion
+            </p>
+        </div>
+
+        <!-- Links -->
+        <div class="flex-1 min-w-[150px] mb-5">
+            <h3 class="mb-2">Quick Links</h3>
+            <p class="text-gray-400 my-1">Home</p>
+            <p class="text-gray-400 my-1">Products</p>
+            <p class="text-gray-400 my-1">Orders</p>
+            <p class="text-gray-400 my-1">Cart</p>
+        </div>
+
+        <!-- Customer -->
+        <div class="flex-1 min-w-[150px] mb-5">
+            <h3 class="mb-2">Customer Service</h3>
+            <p class="text-gray-400 my-1">Help Center</p>
+            <p class="text-gray-400 my-1">Returns</p>
+            <p class="text-gray-400 my-1">Shipping</p>
+            <p class="text-gray-400 my-1">Contact Us</p>
+        </div>
+
+        <!-- Social -->
+        <div class="flex-1 min-w-[150px] mb-5">
+            <h3 class="mb-2">Follow Us</h3>
+            <p class="text-gray-400 my-1">Instagram</p>
+            <p class="text-gray-400 my-1">Facebook</p>
+            <p class="text-gray-400 my-1">Twitter</p>
+        </div>
+
+    </div>
+
+    <hr class="border-gray-700 my-5">
+
+    <div class="text-center text-gray-400">
+        © 2026 ShopEase. All Rights Reserved.
+    </div>
+
+</footer>
+
+</body>
+

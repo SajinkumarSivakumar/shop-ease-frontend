@@ -1,0 +1,152 @@
+<body class="m-0 font-sans bg-[url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1920')] bg-cover bg-center bg-fixed relative">
+
+<!-- Overlay -->
+<div class="fixed inset-0 bg-white/85 -z-10"></div>
+
+<header>
+    <app-common></app-common>
+</header>
+
+<!-- HERO -->
+<section class="bg-gradient-to-r from-[#ff512f] to-[#dd2476] text-white text-center py-6 px-5">
+
+    <h1 class="text-3xl font-bold">40-80% OFF</h1>
+
+    <p class="text-lg font-semibold mt-2">
+        Big Festival Sale is Live 🔥
+    </p>
+
+    <p class="text-sm mt-1 opacity-90">
+        Category Of ShopEase 🔥
+    </p>
+
+</section>
+
+<!-- CATEGORY GRID -->
+<div class="min-h-screen bg-gray-100 p-6">
+
+    <h1 class="text-2xl font-bold mb-6 text-center">🛒 Your Cart</h1>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- LEFT: CART ITEMS -->
+        <div class="lg:col-span-2 space-y-4">
+
+            <div *ngFor="let item of cartList; let i = index"
+                 class="flex bg-white p-4 rounded-xl shadow-md items-center gap-4">
+
+                <!-- Image -->
+                <img
+                        [src]="'http://localhost:3000/uploads/' + item.fileName"
+                        class="w-24 h-24 object-cover rounded-lg"
+                />
+                <!-- Details -->
+                <div class="flex-1">
+                    <h2 class="font-semibold text-gray-800">
+                        {{ item.description }}
+                    </h2>
+
+                    <p class="text-green-600 font-bold mt-1">
+                        ₹ {{ item.finalRate }}
+                    </p>
+
+                    <p class="text-sm text-gray-400 line-through">
+                        ₹ {{ item.rate }}
+                    </p>
+                </div>
+
+                <!-- Remove -->
+                <button
+                        (click)="removeItem(item)"
+                        class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600">
+                    Remove
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT: SUMMARY -->
+        <div class="bg-white p-6 rounded-xl shadow-md h-fit">
+
+            <h2 class="text-lg font-bold mb-4">Order Summary</h2>
+
+            <div class="flex justify-between mb-2">
+                <span>Items</span>
+                <span>{{ cartList.length }}</span>
+            </div>
+
+            <div class="flex justify-between mb-2">
+                <span>Total</span>
+                <span>₹ {{ totalAmount }}</span>
+            </div>
+
+            <hr class="my-3">
+
+            <div class="flex justify-between font-bold text-lg">
+                <span>Grand Total</span>
+                <span class="text-green-600">₹ {{ totalAmount }}</span>
+            </div>
+
+            <button
+                    class="w-full mt-5 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">
+                Checkout
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-[#131921] text-white py-10 px-5 mt-10">
+
+    <div class="flex flex-wrap justify-between max-w-[1200px] mx-auto">
+
+        <!-- Brand -->
+        <div class="flex-1 min-w-[200px] mb-5">
+            <h2 class="mb-2 text-xl">🛍️ ShopEase</h2>
+            <p class="text-gray-400">
+                Your one-stop online shop for fashion
+            </p>
+        </div>
+
+        <!-- Links -->
+        <div class="flex-1 min-w-[150px] mb-5">
+            <h3 class="mb-2">Quick Links</h3>
+            <p class="text-gray-400 my-1">Home</p>
+            <p class="text-gray-400 my-1">Products</p>
+            <p class="text-gray-400 my-1">Orders</p>
+            <p class="text-gray-400 my-1">Cart</p>
+        </div>
+
+        <!-- Customer -->
+        <div class="flex-1 min-w-[150px] mb-5">
+            <h3 class="mb-2">Customer Service</h3>
+            <p class="text-gray-400 my-1">Help Center</p>
+            <p class="text-gray-400 my-1">Returns</p>
+            <p class="text-gray-400 my-1">Shipping</p>
+            <p class="text-gray-400 my-1">Contact Us</p>
+        </div>
+
+        <!-- Social -->
+        <div class="flex-1 min-w-[150px] mb-5">
+            <h3 class="mb-2">Follow Us</h3>
+            <p class="text-gray-400 my-1">Instagram</p>
+            <p class="text-gray-400 my-1">Facebook</p>
+            <p class="text-gray-400 my-1">Twitter</p>
+        </div>
+
+    </div>
+
+    <hr class="border-gray-700 my-5">
+
+    <div class="text-center text-gray-400">
+        © 2026 ShopEase. All Rights Reserved.
+    </div>
+
+</footer>
+
+</body>
+

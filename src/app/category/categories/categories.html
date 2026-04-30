@@ -1,0 +1,134 @@
+<body class="m-0 font-sans bg-[url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1920')] bg-cover bg-center bg-fixed relative">
+
+<!-- Overlay -->
+<div class="fixed inset-0 bg-white/85 -z-10"></div>
+
+<header>
+    <app-common></app-common>
+</header>
+
+<!-- HERO -->
+<section class="bg-gradient-to-r from-[#ff512f] to-[#dd2476] text-white text-center py-6 px-5">
+
+    <h1 class="text-3xl font-bold">40-80% OFF</h1>
+
+    <p class="text-lg font-semibold mt-2">
+        Big Festival Sale is Live 🔥
+    </p>
+
+    <p class="text-sm mt-1 opacity-90">
+        Category Of ShopEase 🔥
+    </p>
+
+</section>
+
+<!-- CATEGORY GRID -->
+<section class="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 px-6 py-6 w-full">
+
+    <div *ngFor="let list of categories"
+         class="bg-white rounded-2xl p-4 shadow-md hover:shadow-xl transition flex flex-col">
+
+        <!-- Image -->
+        <div class="overflow-hidden rounded-lg flex justify-center">
+            <img
+                    [src]="'http://localhost:3000/uploads/' + list.fileName"
+                    class="w-[85%] h-[200px] object-cover transition duration-300 hover:scale-105"
+            />
+        </div>
+
+        <!-- Title -->
+        <h3 class="text-sm font-semibold mt-3 text-gray-800 line-clamp-2 text-left">
+            {{ list.description }}
+        </h3>
+
+        <!-- Price Section -->
+        <div class="mt-2 text-left">
+
+            <!-- Final Price -->
+            <span class="text-lg font-bold text-green-600">
+        ₹ {{ list.finalRate }}
+      </span>
+
+            <!-- Original Price -->
+            <span class="text-sm text-gray-400 line-through ml-2">
+        ₹ {{ list.rate }}
+      </span>
+
+            <!-- Discount -->
+            <span class="text-sm text-red-500 ml-2 font-semibold">
+        ({{ list.discount }}% OFF)
+      </span>
+
+        </div>
+
+        <!-- Buttons -->
+        <div class="mt-4 flex gap-2">
+
+            <!-- Add to Cart -->
+            <button (click)="addTocart(list)"
+                    class="flex-1 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 rounded-lg transition">
+                🛒 Add to Cart
+            </button>
+
+            <!-- Buy Now -->
+            <button (click)="buyNow(list)"
+                    class="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-lg transition">
+                ⚡ Buy Now
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#131921] text-white py-10 px-5 mt-10">
+
+    <div class="flex flex-wrap justify-between max-w-[1200px] mx-auto">
+
+        <!-- Brand -->
+        <div class="flex-1 min-w-[200px] mb-5">
+            <h2 class="mb-2 text-xl">🛍️ ShopEase</h2>
+            <p class="text-gray-400">
+                Your one-stop online shop for fashion
+            </p>
+        </div>
+
+        <!-- Links -->
+        <div class="flex-1 min-w-[150px] mb-5">
+            <h3 class="mb-2">Quick Links</h3>
+            <p class="text-gray-400 my-1">Home</p>
+            <p class="text-gray-400 my-1">Products</p>
+            <p class="text-gray-400 my-1">Orders</p>
+            <p class="text-gray-400 my-1">Cart</p>
+        </div>
+
+        <!-- Customer -->
+        <div class="flex-1 min-w-[150px] mb-5">
+            <h3 class="mb-2">Customer Service</h3>
+            <p class="text-gray-400 my-1">Help Center</p>
+            <p class="text-gray-400 my-1">Returns</p>
+            <p class="text-gray-400 my-1">Shipping</p>
+            <p class="text-gray-400 my-1">Contact Us</p>
+        </div>
+
+        <!-- Social -->
+        <div class="flex-1 min-w-[150px] mb-5">
+            <h3 class="mb-2">Follow Us</h3>
+            <p class="text-gray-400 my-1">Instagram</p>
+            <p class="text-gray-400 my-1">Facebook</p>
+            <p class="text-gray-400 my-1">Twitter</p>
+        </div>
+
+    </div>
+
+    <hr class="border-gray-700 my-5">
+
+    <div class="text-center text-gray-400">
+        © 2026 ShopEase. All Rights Reserved.
+    </div>
+
+</footer>
+
+</body>
