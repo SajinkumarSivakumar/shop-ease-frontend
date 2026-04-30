@@ -31,178 +31,124 @@
     </h1>
 
     <!-- CARD WRAPPER -->
-<!--    <div  class="flex items-center justify-center">-->
 
-<!--        <div class="max-w-6xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 border">-->
+    <ng-container *ngIf="product; else noProductBlock">
+        <div class="flex items-center justify-center">
 
-<!--            &lt;!&ndash; LEFT IMAGE &ndash;&gt;-->
-<!--            <div class="p-8 bg-gray-50 flex flex-col items-center justify-center relative">-->
+            <div class="max-w-6xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 border">
 
-<!--      <span class="absolute top-4 left-4 bg-red-500 text-white text-xs px-3 py-1 rounded-full shadow">-->
-<!--        {{ product?.discount }}% OFF-->
-<!--      </span>-->
+                <!-- LEFT IMAGE -->
+                <div class="p-8 bg-gray-50 flex flex-col items-center justify-center relative">
 
-<!--                <img-->
-<!--                        [src]="'http://localhost:3000/uploads/' + product.fileName"-->
-<!--                        class="w-[80%] max-h-[400px] object-contain hover:scale-110 transition duration-300 drop-shadow-xl"-->
-<!--                />-->
+      <span class="absolute top-4 left-4 bg-red-500 text-white text-xs px-3 py-1 rounded-full shadow">
+        {{ product?.discount }}% OFF
+      </span>
 
-
-
-
-<!--            </div>-->
-
-<!--            &lt;!&ndash; RIGHT DETAILS &ndash;&gt;-->
-<!--            <div class="p-8 space-y-6">-->
-
-<!--                &lt;!&ndash; TITLE &ndash;&gt;-->
-<!--                <h1 class="text-3xl font-bold text-gray-800">-->
-<!--                    {{ product?.name }}-->
-<!--                </h1>-->
-
-<!--                &lt;!&ndash; RATING &ndash;&gt;-->
-<!--                <div class="flex items-center gap-2 text-yellow-500">-->
-<!--                    ⭐⭐⭐⭐☆-->
-<!--                    <span class="text-gray-500 text-sm">(134 reviews)</span>-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash; PRICE &ndash;&gt;-->
-<!--                <div class="bg-gray-50 p-5 rounded-xl">-->
-
-<!--                    <div class="flex items-center gap-4">-->
-<!--          <span class="text-3xl font-bold text-green-600">-->
-<!--            ₹ {{ product?.finalRate }}-->
-<!--          </span>-->
-
-<!--                        <span class="text-lg text-gray-400 line-through">-->
-<!--            ₹ {{ product?.rate }}-->
-<!--          </span>-->
-<!--                    </div>-->
-
-<!--                    <div class="text-sm text-green-600 mt-1">-->
-<!--                        You save ₹ {{ product?.rate - product?.finalRate }}-->
-<!--                    </div>-->
-
-<!--                </div>-->
-
-<!--                &lt;!&ndash; STOCK &ndash;&gt;-->
-<!--                <div class="text-sm font-semibold text-green-600">-->
-<!--                    ✔ In Stock-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash; DESCRIPTION &ndash;&gt;-->
-<!--                <p class="text-gray-600 leading-relaxed">-->
-<!--                    {{ product?.description }}-->
-<!--                </p>-->
-
-<!--                &lt;!&ndash; HIGHLIGHTS &ndash;&gt;-->
-<!--                <div class="bg-gray-50 p-4 rounded-xl">-->
-<!--                    <h3 class="font-semibold mb-2">Highlights</h3>-->
-<!--                    <ul class="text-sm text-gray-600 space-y-1 list-disc ml-5">-->
-<!--                        <li>Premium quality material</li>-->
-<!--                        <li>Durable & long lasting</li>-->
-<!--                        <li>Best in this price range</li>-->
-<!--                    </ul>-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash; QUANTITY &ndash;&gt;-->
-
-
-<!--                &lt;!&ndash; BUTTONS &ndash;&gt;-->
-<!--                <div class="flex gap-4">-->
-
-
-<!--                    <button-->
-<!--                            (click)="yourOrder(product)"-->
-<!--                            class="w-full bg-orange-500 hover:bg-red-500 text-white py-3 rounded-xl font-semibold transition">-->
-<!--                        Buy Now ⚡-->
-<!--                    </button>-->
-
-<!--                </div>-->
-
-<!--                &lt;!&ndash; TRUST INFO &ndash;&gt;-->
-<!--                <div class="grid grid-cols-3 text-center text-xs text-gray-500 gap-4 mt-4">-->
-
-<!--                    <div>-->
-<!--                        🚚<br/>Free Delivery-->
-<!--                    </div>-->
-
-<!--                    <div>-->
-<!--                        🔁<br/>7 Days Return-->
-<!--                    </div>-->
-
-<!--                    <div>-->
-<!--                        🔒<br/>Secure Payment-->
-<!--                    </div>-->
-
-<!--                </div>-->
-
-<!--            </div>-->
-
-<!--        </div>-->
+                    <img
+                            [src]="'http://localhost:3000/uploads/' + product.fileName"
+                            class="w-[80%] max-h-[400px] object-contain hover:scale-110 transition duration-300 drop-shadow-xl"
+                    />
 
 
 
 
+                </div>
 
-<!--    </div>-->
+                <!-- RIGHT DETAILS -->
+                <div class="p-8 space-y-6">
 
+                    <!-- TITLE -->
+                    <h1 class="text-3xl font-bold text-gray-800">
+                        {{ product?.name }}
+                    </h1>
 
-    <div *ngIf="product; else noProductBlock" class="flex items-center justify-center">
-
-        <div class="max-w-6xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 border">
-
-            <!-- LEFT IMAGE -->
-            <div class="p-8 bg-gray-50 flex flex-col items-center justify-center relative">
-
-            <span *ngIf="product?.discount"
-                  class="absolute top-4 left-4 bg-red-500 text-white text-xs px-3 py-1 rounded-full shadow">
-                {{ product.discount }}% OFF
-            </span>
-
-                <img *ngIf="product?.fileName; else noImg"
-                     [src]="'http://localhost:3000/uploads/' + product.fileName"
-                     class="w-[80%] max-h-[400px] object-contain"/>
-
-                <ng-template #noImg>
-                    <p class="text-gray-400">No Image</p>
-                </ng-template>
-
-            </div>
-
-            <!-- RIGHT -->
-            <div class="p-8 space-y-6">
-
-                <h1 class="text-3xl font-bold text-gray-800">
-                    {{ product?.name }}
-                </h1>
-
-                <!-- PRICE -->
-                <div class="bg-gray-50 p-5 rounded-xl">
-
-                    <div class="flex items-center gap-4">
-                    <span class="text-3xl font-bold text-green-600">
-                        ₹ {{ product?.finalRate || 0 }}
-                    </span>
-
-                        <span class="text-lg text-gray-400 line-through">
-                        ₹ {{ product?.rate || 0 }}
-                    </span>
+                    <!-- RATING -->
+                    <div class="flex items-center gap-2 text-yellow-500">
+                        ⭐⭐⭐⭐☆
+                        <span class="text-gray-500 text-sm">(134 reviews)</span>
                     </div>
 
-                    <div class="text-sm text-green-600 mt-1">
-                        You save ₹ {{ (product?.rate || 0) - (product?.finalRate || 0) }}
+                    <!-- PRICE -->
+                    <div class="bg-gray-50 p-5 rounded-xl">
+
+                        <div class="flex items-center gap-4">
+          <span class="text-3xl font-bold text-green-600">
+            ₹ {{ product?.finalRate }}
+          </span>
+
+                            <span class="text-lg text-gray-400 line-through">
+            ₹ {{ product?.rate }}
+          </span>
+                        </div>
+
+                        <div class="text-sm text-green-600 mt-1">
+                            You save ₹ {{ product?.rate - product?.finalRate }}
+                        </div>
+
+                    </div>
+
+                    <!-- STOCK -->
+                    <div class="text-sm font-semibold text-green-600">
+                        ✔ In Stock
+                    </div>
+
+                    <!-- DESCRIPTION -->
+                    <p class="text-gray-600 leading-relaxed">
+                        {{ product?.description }}
+                    </p>
+
+                    <!-- HIGHLIGHTS -->
+                    <div class="bg-gray-50 p-4 rounded-xl">
+                        <h3 class="font-semibold mb-2">Highlights</h3>
+                        <ul class="text-sm text-gray-600 space-y-1 list-disc ml-5">
+                            <li>Premium quality material</li>
+                            <li>Durable & long lasting</li>
+                            <li>Best in this price range</li>
+                        </ul>
+                    </div>
+
+                    <!-- QUANTITY -->
+
+
+                    <!-- BUTTONS -->
+                    <div class="flex gap-4">
+
+
+                        <button
+                                (click)="yourOrder(product)"
+                                class="w-full bg-orange-500 hover:bg-red-500 text-white py-3 rounded-xl font-semibold transition">
+                            Buy Now ⚡
+                        </button>
+
+                    </div>
+
+                    <!-- TRUST INFO -->
+                    <div class="grid grid-cols-3 text-center text-xs text-gray-500 gap-4 mt-4">
+
+                        <div>
+                            🚚<br/>Free Delivery
+                        </div>
+
+                        <div>
+                            🔁<br/>7 Days Return
+                        </div>
+
+                        <div>
+                            🔒<br/>Secure Payment
+                        </div>
+
                     </div>
 
                 </div>
 
             </div>
 
+
+
+
         </div>
+    </ng-container>
 
-    </div>
-
-    <!-- ❌ NO PRODUCT -->
     <ng-template #noProductBlock>
         <div class="flex flex-col items-center justify-center h-[60vh] text-center">
             <h2 class="text-2xl font-bold text-gray-700">
@@ -213,6 +159,10 @@
             </p>
         </div>
     </ng-template>
+
+
+
+
 
 </div>
 
