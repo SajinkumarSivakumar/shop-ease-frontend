@@ -7,6 +7,7 @@ import {ProductService} from "../../products/product-service";
 import {Router} from "@angular/router";
 import {debounceTime, distinctUntilChanged} from "rxjs";
 import Swal from "sweetalert2";
+import {HostListener} from "@angular/core";
 
 @Component({
   selector: 'app-categories',
@@ -18,12 +19,42 @@ import Swal from "sweetalert2";
 export class Categories implements OnInit {
 
   categories: any =[];
-  allCategories: any = []
+  allCategories: any = [];
+    private popStateHandler: any;
 
   constructor(private categoryService:CategoriesService,private ps:ProductService,private route:Router, private cd: ChangeDetectorRef,private pd:ProductService) {
   }
 
   ngOnInit() {
+
+
+
+      history.pushState({ page: 1 }, '', location.href);
+      this.popStateHandler = (event: any) => {
+          Swal.fire({
+              title: 'Are you sure?',
+              text: 'Do you want to go back?',
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonText: 'Yes',
+              cancelButtonText: 'No'
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  window.removeEventListener('popstate', this.popStateHandler);
+                  history.back();
+              } else {
+                  history.pushState({ page: 1 }, '', location.href);
+              }
+
+          });
+
+      };
+
+      window.addEventListener('popstate', this.popStateHandler);
+
+
+
+
 
     this.categoryService.getCategoriesProduct().subscribe((res:any)=>{
       if(res.status){
@@ -96,4 +127,9 @@ export class Categories implements OnInit {
 
 
     }
+
+
+
+
+
 }

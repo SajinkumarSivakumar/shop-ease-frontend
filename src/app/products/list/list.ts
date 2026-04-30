@@ -2,26 +2,33 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../product-service";
 import {Common} from "../../common/common/common";
 import Swal from "sweetalert2";
+import {CommonModule} from "@angular/common";
 
 
 @Component({
   selector: 'app-list',
   imports: [
-    Common,
+    Common,CommonModule
   ],
   templateUrl: './list.html',
   styleUrl: './list.css',
   standalone: true,
 })
 export class List implements OnInit {
-  product: any;
+  product: any = null;
   constructor(private ps:ProductService) {
   }
 
   ngOnInit() {
     this.ps.itemName.subscribe((res:any)=>{
-      console.log('jjj',res)
-      this.product = res;
+
+      if (!res || Object.keys(res).length === 0) {
+        this.product = null;
+      }else {
+        this.product = res;
+      }
+
+      //this.product = res;
     })
   }
 

@@ -4,6 +4,7 @@ import {ProductService} from "../product-service";
 import Swal from "sweetalert2";
 import {Common} from "../../common/common/common";
 import {FormsModule} from "@angular/forms";
+import {OnDestroy} from "@angular/core";
 
 @Component({
   selector: 'app-products-upload',
@@ -12,17 +13,54 @@ import {FormsModule} from "@angular/forms";
   styleUrl: './products-upload.css',
   standalone:true
 })
-export class ProductsUpload implements OnInit {
+export class ProductsUpload implements OnInit ,OnDestroy {
 
   selectedFile: File | null = null;
   inputValue: string = '';
   rate:string ='';
   discount:string ='';
   finalRate:string ='';
+  private isConfirmOpen = false;
+  private popStateHandler: any;
+
 
   constructor(private productService:ProductService) {
   }
   ngOnInit() {
+    history.pushState({ page: 'upload' }, '', location.href);
+
+    this.popStateHandler = () => {
+
+
+      if (this.isConfirmOpen) return;
+
+      this.isConfirmOpen = true;
+
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'Do you want to go back?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No'
+      }).then((result) => {
+
+        this.isConfirmOpen = false;
+
+        if (result.isConfirmed) {
+          window.removeEventListener('popstate', this.popStateHandler);
+          history.back();
+        } else {
+          history.pushState({ page: 'upload' }, '', location.href);
+        }
+
+      });
+
+    };
+
+    setTimeout(() => {
+      window.addEventListener('popstate', this.popStateHandler);
+    }, 0);
   }
 
   onFileSelected(event: any) {
@@ -88,5 +126,8 @@ export class ProductsUpload implements OnInit {
         });
       }
     })
+  }
+  ngOnDestroy() {
+    window.removeEventListener('popstate', this.popStateHandler);
   }
 }

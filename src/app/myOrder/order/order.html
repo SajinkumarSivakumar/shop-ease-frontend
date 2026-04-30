@@ -34,7 +34,7 @@
     </h1>
 
     <!-- TABLE WRAPPER -->
-    <div class="max-w-7xl mx-auto bg-white shadow-xl rounded-2xl overflow-hidden">
+    <div *ngIf="orderList && orderList.length > 0; else noOrders" class="max-w-7xl mx-auto bg-white shadow-xl rounded-2xl overflow-hidden">
 
         <div class="overflow-x-auto">
 
@@ -112,6 +112,21 @@
         </div>
 
     </div>
+
+
+    <ng-template #noOrders>
+        <div class="flex flex-col items-center justify-center h-[60vh] text-center">
+
+            <h2 class="text-2xl font-bold text-gray-700">
+                📦 No Orders Yet
+            </h2>
+
+            <p class="text-gray-500 mt-2">
+                You haven’t placed any orders yet.
+            </p>
+
+        </div>
+    </ng-template>
 
 </div>
 
