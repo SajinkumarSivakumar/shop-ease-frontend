@@ -17,38 +17,13 @@ export class CartList implements OnInit {
 
   cartList: any[] = [];
   totalAmount: number = 0;
-  private popStateHandler: any;
+
 
 
   constructor(private cs:CategoriesService,private cd: ChangeDetectorRef) {
   }
 
   ngOnInit() {
-
-    history.pushState({ page: 1 }, '', location.href);
-    this.popStateHandler = (event: any) => {
-      Swal.fire({
-        title: 'Are you sure?',
-        text: 'Do you want to go back?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'No'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          window.removeEventListener('popstate', this.popStateHandler);
-          history.back();
-        } else {
-          history.pushState({ page: 1 }, '', location.href);
-        }
-
-      });
-
-    };
-
-    window.addEventListener('popstate', this.popStateHandler);
-
-
     this.apiCallFunc();
   }
 

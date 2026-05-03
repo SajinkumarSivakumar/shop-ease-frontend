@@ -13,54 +13,19 @@ import {OnDestroy} from "@angular/core";
   styleUrl: './products-upload.css',
   standalone:true
 })
-export class ProductsUpload implements OnInit ,OnDestroy {
+export class ProductsUpload implements OnInit {
 
   selectedFile: File | null = null;
   inputValue: string = '';
   rate:string ='';
   discount:string ='';
   finalRate:string ='';
-  private isConfirmOpen = false;
-  private popStateHandler: any;
 
 
   constructor(private productService:ProductService) {
   }
   ngOnInit() {
-    history.pushState({ page: 'upload' }, '', location.href);
 
-    this.popStateHandler = () => {
-
-
-      if (this.isConfirmOpen) return;
-
-      this.isConfirmOpen = true;
-
-      Swal.fire({
-        title: 'Are you sure?',
-        text: 'Do you want to go back?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'No'
-      }).then((result) => {
-
-        this.isConfirmOpen = false;
-
-        if (result.isConfirmed) {
-          window.removeEventListener('popstate', this.popStateHandler);
-          history.back();
-        } else {
-          history.pushState({ page: 'upload' }, '', location.href);
-        }
-
-      });
-
-    };
-
-    setTimeout(() => {
-      window.addEventListener('popstate', this.popStateHandler);
-    }, 0);
   }
 
   onFileSelected(event: any) {
@@ -127,7 +92,5 @@ export class ProductsUpload implements OnInit ,OnDestroy {
       }
     })
   }
-  ngOnDestroy() {
-    window.removeEventListener('popstate', this.popStateHandler);
-  }
+
 }

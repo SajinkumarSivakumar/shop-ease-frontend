@@ -27,36 +27,7 @@ export class Categories implements OnInit {
 
   ngOnInit() {
 
-
-
-      history.pushState({ page: 1 }, '', location.href);
-      this.popStateHandler = (event: any) => {
-          Swal.fire({
-              title: 'Are you sure?',
-              text: 'Do you want to go back?',
-              icon: 'warning',
-              showCancelButton: true,
-              confirmButtonText: 'Yes',
-              cancelButtonText: 'No'
-          }).then((result) => {
-              if (result.isConfirmed) {
-                  window.removeEventListener('popstate', this.popStateHandler);
-                  history.back();
-              } else {
-                  history.pushState({ page: 1 }, '', location.href);
-              }
-
-          });
-
-      };
-
-      window.addEventListener('popstate', this.popStateHandler);
-
-
-
-
-
-    this.categoryService.getCategoriesProduct().subscribe((res:any)=>{
+      this.categoryService.getCategoriesProduct().subscribe((res:any)=>{
       if(res.status){
          this.categories = res.categoryProducts;
         this.allCategories = res.categoryProducts;
