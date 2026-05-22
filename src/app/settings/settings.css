@@ -1,0 +1,17 @@
+.modern-field .mat-mdc-text-field-wrapper {
+    border-radius: 14px !important;
+    background: linear-gradient(to right, #ffffff, #f8fafc);
+}
+
+.modern-field .mdc-notched-outline__leading,
+.modern-field .mdc-notched-outline__notch,
+.modern-field .mdc-notched-outline__trailing {
+    border-color: #cbd5e1 !important;
+}
+
+.modern-field.mat-focused .mdc-notched-outline__leading,
+.modern-field.mat-focused .mdc-notched-outline__notch,
+.modern-field.mat-focused .mdc-notched-outline__trailing {
+    border-color: #2563eb !important;
+    border-width: 2px !important;
+}

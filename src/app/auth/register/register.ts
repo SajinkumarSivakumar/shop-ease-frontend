@@ -28,7 +28,7 @@ export class Register implements OnInit {
       email:['', Validators.required],
       password:['',Validators.required],
       confirmPassword:['', Validators.required],
-      role:['', Validators.required]
+      //role:['', Validators.required]
 
     });
   }

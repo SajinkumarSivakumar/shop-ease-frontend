@@ -5,7 +5,7 @@ import {Common} from "../../common/common/common";
 import {CommonModule} from "@angular/common";
 import {ProductService} from "../../products/product-service";
 import {Router} from "@angular/router";
-import {debounceTime, distinctUntilChanged} from "rxjs";
+import {debounceTime, distinctUntilChanged, Observable, of, switchMap} from "rxjs";
 import Swal from "sweetalert2";
 import {HostListener} from "@angular/core";
 
@@ -21,6 +21,7 @@ export class Categories implements OnInit {
   categories: any =[];
   allCategories: any = [];
     private popStateHandler: any;
+    cat$!: Observable<any>;
 
   constructor(private categoryService:CategoriesService,private ps:ProductService,private route:Router, private cd: ChangeDetectorRef,private pd:ProductService) {
   }
@@ -35,6 +36,8 @@ export class Categories implements OnInit {
        }
 
     });
+
+
 
 
 
@@ -53,6 +56,8 @@ export class Categories implements OnInit {
           );
 
         });
+
+
 
   }
 

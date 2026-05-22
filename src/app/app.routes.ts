@@ -7,6 +7,7 @@ import {List} from "./products/list/list";
 import {CartList} from "./cart/cart-list/cart-list";
 import {Order} from "./myOrder/order/order";
 import {RoleGuard} from "./guards/role-guard";
+import {Settings} from "./settings/settings";
 
 export const routes: Routes = [
 
@@ -41,4 +42,9 @@ export const routes: Routes = [
         path:'order/List',
         component:Order
     },
+    {
+        path:'settings',
+        component:Settings,
+        canActivate:[RoleGuard]
+    }
 ];

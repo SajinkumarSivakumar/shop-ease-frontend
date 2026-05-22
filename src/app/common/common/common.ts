@@ -79,5 +79,9 @@ export class Common implements OnInit {
 
   }
 
+  navigateToSettings(){
+    this.route.navigateByUrl('/settings');
+  }
+
 
 }

@@ -22,4 +22,12 @@ export class Auth {
     return this.http.post(env.apiUrl + 'auth/register', data);
   }
 
+  getUsersdetails(){
+    return this.http.get(env.apiUrl + 'auth/getUsersdetails');
+  }
+
+  saveUserRole(data:any):Observable<any> {
+    return this.http.post(env.apiUrl + 'auth/saveUserRole', data);
+  }
+
 }
